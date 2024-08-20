@@ -1,0 +1,74 @@
+@if(isLoading){
+  <app-spinner [isLoading]="isLoading"></app-spinner>
+  }
+  @else {
+    <div class="container">
+      <div class="card user-form">
+        <div class="card-body">
+          <form [formGroup]="userForm">
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input formControlName="name" type="text" class="form-control"
+                [ngClass]="{'is-invalid': f['name'].errors && (f['name'].dirty || f['name'].touched)}" id="name"
+                placeholder="Enter your name" required>
+              @if (f['email'].errors && (f['name'].dirty || f['name'].touched)) {
+              <div class="invalid-feedback">
+                <div *ngIf="f['name'].hasError('required')">
+                  Name is required.
+                </div>
+              </div>
+              }
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input formControlName="email" type="email" class="form-control"
+                [ngClass]="{'is-invalid': f['email'].errors  && (f['email'].dirty || f['email'].touched)}" id="email"
+                placeholder="Enter your email" required>
+              @if (f['email'].errors && (f['email'].dirty || f['email'].touched)) {
+              <div class="invalid-feedback">
+                @if (f['email'].errors['required']) {
+                <div>Email is required.</div>
+                } @if (f['email'].errors['email']) {
+                <div>Email is invalid.</div>
+                }
+              </div>
+              }
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Address</label>
+              <textarea formControlName="address" class="form-control" id="address" rows="3"
+                [ngClass]="{'is-invalid': f['address'].errors  && (f['address'].dirty || f['address'].touched)}"
+                placeholder="Enter your address" required>
+              </textarea>
+              @if (f['address'].errors && (f['address'].dirty || f['address'].touched)) {
+              <div class="invalid-feedback">
+                @if (f['address'].errors['required']) {
+                <div>Address is required.</div>
+                }
+              </div>
+              }
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Company</label>
+              <input formControlName="company" type="text" class="form-control"
+                [ngClass]="{'is-invalid': f['company'].errors  && (f['company'].dirty || f['company'].touched)}"
+                id="company" placeholder="Enter your company name" required>
+              @if (f['company'].errors && (f['company'].dirty || f['company'].touched)) {
+              <div class="invalid-feedback">
+                @if (f['company'].errors['required']) {
+                <div>Company name is required.</div>
+                }
+              </div>
+              }
+            </div>
+          </form>
+          <div class="mb-3"><button type="submit" (click)="onSubmit()" class="btn btn-primary w-100">
+              @if (isSubmit) {
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              } @else {Submit}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }

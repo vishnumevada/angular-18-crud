@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+.container {
+  margin: 3rem 0;
+  opacity: 0.8;
+}
+
+
+body {
+  background-image: url('/images/bg3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+}
