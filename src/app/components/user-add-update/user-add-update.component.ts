@@ -44,7 +44,9 @@ export class UserAddUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('id') || '';
-    this.getUserDetail(this.userId);
+    if (this.userId) {
+      this.getUserDetail(this.userId);
+    }
   }
 
   getUserDetail(userId: string) {
